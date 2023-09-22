@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,6 +44,7 @@
         }
     </style>
 </head>
+
 <body style="background-color: #B0D9B1;">
     <div class="container mt-5 col-md-6 custom-container">
         <h2>Add Student</h2>
@@ -53,8 +55,8 @@
                 <input type="text" class="form-control" id="StudName" name="StudName" placeholder="Enter Student Name" value="<?= isset($pro['StudName']) ? $pro['StudName'] : '' ?>">
             </div>
             <div class="form-group">
-                 <label for="StudGender">Student Gender</label>
-                 <select class="form-control" id="StudGender" name="StudGender">
+                <label for="StudGender">Student Gender</label>
+                <select class="form-control" id="StudGender" name="StudGender">
                     <option value="Male" <?= (isset($pro['StudGender']) && $pro['StudGender'] === 'Male') ? 'selected' : '' ?>>Male</option>
                     <option value="Female" <?= (isset($pro['StudGender']) && $pro['StudGender'] === 'Female') ? 'selected' : '' ?>>Female</option>
                 </select>
@@ -94,41 +96,28 @@
 
     <div class="container mt-5 custom-container">
         <h2>Student Listing</h2>
-        <table class="table custom-table">
-            <thead>
-                <tr>
-                    <th>Student Name</th>
-                    <th>Student Gender</th>
-                    <th>Student Course</th>
-                    <th>Student Section</th>
-                    <th>Student Year</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($product as $pr): ?>
-                    <tr>
-                        <td><?= $pr['StudName'] ?></td>
-                        <td><?= $pr['StudGender'] ?></td>
-                        <td><?= $pr['StudCourse'] ?></td>
-                        <td><?= $pr['StudSection'] ?></td>
-                        <td><?= $pr['StudYear'] ?></td>
-                        <td>
-                            <a href="/delete/<?= $pr['id'] ?>" class="btn btn-danger btn-sm custom-button-delete">
-                                <i class="fas fa-trash"></i> Delete
-                            </a>
-                            <a href="/edit/<?= $pr['id'] ?>" class="btn btn-primary btn-sm custom-button">
-                                <i class="fas fa-edit"></i> Edit
-                            </a>
-                        </td>
-                    </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
+        <ul>
+            <?php foreach ($product as $pr): ?>
+                <li>
+                    <strong>Student Name:</strong> <?= $pr['StudName'] ?><br>
+                    <strong>Student Gender:</strong> <?= $pr['StudGender'] ?><br>
+                    <strong>Student Course:</strong> <?= $pr['StudCourse'] ?><br>
+                    <strong>Student Section:</strong> <?= $pr['StudSection'] ?><br>
+                    <strong>Student Year:</strong> <?= $pr['StudYear'] ?><br>
+                    <a href="/delete/<?= $pr['id'] ?>" class="btn btn-danger btn-sm custom-button-delete">
+                        <i class="fas fa-trash"></i> Delete
+                    </a>
+                    <a href="/edit/<?= $pr['id'] ?>" class="btn btn-primary btn-sm custom-button">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                </li>
+            <?php endforeach ?>
+        </ul>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
